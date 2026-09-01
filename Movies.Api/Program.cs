@@ -4,7 +4,7 @@ using Movies.Application.Database;
 var builder = WebApplication.CreateBuilder(args);
 var config = builder.Configuration;
 
-
+builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
@@ -20,8 +20,6 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
-app.UseAuthorization();
 
 app.MapControllers();
 
