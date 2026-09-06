@@ -12,7 +12,7 @@ namespace Movies.Api.Controllers.Helpers;
 [ApiController]
 public class IdentityController : ControllerBase
 {
-    private const string TokenSecret = "StoreAndLoadThisSecurely";
+    private const string TokenSecret = "ThisIsAConsiderablyLongerSecretKeyThatShouldBeStoredSecurelyAndNotHardcoded1234567890";
     private static readonly TimeSpan TokenLifetime = TimeSpan.FromHours(8);
 
     [HttpPost("token")]
