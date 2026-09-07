@@ -1,5 +1,6 @@
 using Dapper;
 using Movies.Application.Database;
+using Movies.Application.Models;
 
 namespace Movies.Application.Repositories;
 
@@ -59,5 +60,16 @@ public class RatingRepository(IDbConnectionFactory dbConnectionFactory) : IRatin
             """, new { userId, movieId }, cancellationToken: cancellationToken));
         
         return result > 0;
+    }
+
+    public async Task<IEnumerable<MovieRating>> GetRatingsForUserAsync(Guid userId, CancellationToken cancellationToken = default)
+    {
+        using var connection = await dbConnectionFactory.CreateConnectionAsync(cancellationToken);
+        return await connection.QueryAsync<MovieRating>(new CommandDefinition(
+            """
+            select r.rating, r.movie, m.slug
+            from ratings r inner join movies m on r.movieid = m.id
+            where userid = @userId
+            """, new { userId }, cancellationToken: cancellationToken));
     }
 }
