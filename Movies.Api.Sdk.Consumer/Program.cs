@@ -38,3 +38,32 @@ foreach (var movieResponse in movies.Items)
 {
     Console.WriteLine(JsonSerializer.Serialize(movieResponse));
 }
+
+var createRequest = new CreateMovieRequest
+{
+    Title = "The Big Lebowski",
+    YearOfRelease = 1998,
+    Genres = ["Comedy", "Crime"]
+};
+var createdMovie = await moviesApi.CreateMovieAsync(createRequest);
+Console.WriteLine(JsonSerializer.Serialize(createdMovie));
+
+var updateRequest = new UpdateMovieRequest
+{
+    Title = createdMovie.Title,
+    YearOfRelease = createdMovie.YearOfRelease,
+    Genres = createdMovie.Genres
+};
+var updatedMovie = await moviesApi.UpdateMovieAsync(createdMovie.Id, updateRequest);
+Console.WriteLine(JsonSerializer.Serialize(updatedMovie));
+
+await moviesApi.RateMovieAsync(createdMovie.Id, new RateMovieRequest { Rating = 5 });
+
+var userRatings = await moviesApi.GetUserRatingsAsync();
+foreach (var rating in userRatings)
+{
+    Console.WriteLine(JsonSerializer.Serialize(rating));
+}
+
+await moviesApi.DeleteRatingAsync(createdMovie.Id);
+await moviesApi.DeleteMovieAsync(createdMovie.Id);
