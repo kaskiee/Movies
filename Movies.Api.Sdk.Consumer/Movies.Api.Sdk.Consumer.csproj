@@ -14,6 +14,7 @@
     <ItemGroup>
       <PackageReference Include="Refit.HttpClientFactory" Version="16.1.0" />
       <PackageReference Include="Refit.Reflection" Version="16.1.0" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="8.23.0" />
     </ItemGroup>
 
 </Project>
