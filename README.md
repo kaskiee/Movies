@@ -77,7 +77,7 @@ To try the SDK consumer (client demo), run the API first, then:
 dotnet run --project Movies.Api.Sdk.Consumer
 ```
 
-## Topics learned
+## Topics covered
 
 This project was a vehicle to learn and practice:
 
