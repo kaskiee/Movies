@@ -25,6 +25,7 @@ public class MoviesController(IMovieService movieService) : ControllerBase
         return CreatedAtAction(nameof(Get), new { idOrSLug = movie.Id }, movie);
     }
     
+    [Obsolete]
     [HttpGet(ApiEndpoints.Movies.Get)]
     [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
