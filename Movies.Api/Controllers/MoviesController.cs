@@ -46,6 +46,7 @@ public class MoviesController(IMovieService movieService) : ControllerBase
         return Ok(response);
     }
     
+    [Obsolete]
     [HttpGet(ApiEndpoints.Movies.GetAll)]
     [ProducesResponseType(typeof(MoviesResponse), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll([FromQuery] GetAllMoviesRequest request, CancellationToken cancellationToken)
@@ -56,9 +57,10 @@ public class MoviesController(IMovieService movieService) : ControllerBase
         
         var movies = await movieService.GetAllAsync(options, cancellationToken);
         var movieCount = await movieService.GetCountAsync(options.Title, options.YearOfRelease, cancellationToken);
-        var response = movies.MapToResponse(request.Page, request.PageSize, movieCount);
-        
-        return Ok(response);
+        // var response = movies.MapToResponse(request.Page, request.PageSize, movieCount);
+        //
+        // return Ok(response);
+        return Ok();
     }
     
     [Authorize(AuthConstants.TrustedMemberPolicyName)]
