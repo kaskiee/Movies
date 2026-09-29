@@ -13,6 +13,7 @@ namespace Movies.Api.Controllers;
 [ApiVersion(1.0)]
 public class RatingsController(IRatingService ratingService) : ControllerBase
 {
+    [Obsolete]
     [Authorize]
     [HttpPut(ApiEndpoints.Movies.Rate)]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -24,6 +25,7 @@ public class RatingsController(IRatingService ratingService) : ControllerBase
         return result ? Ok() : NotFound();
     }
 
+    [Obsolete]
     [Authorize]
     [HttpDelete(ApiEndpoints.Movies.DeleteRating)]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -35,6 +37,7 @@ public class RatingsController(IRatingService ratingService) : ControllerBase
         return result ? Ok() : NotFound();
     }
 
+    [Obsolete]
     [Authorize]
     [HttpGet(ApiEndpoints.Ratings.GetUserRatings)]
     [ProducesResponseType(typeof(IEnumerable<MovieRatingResponse>), StatusCodes.Status200OK)]
