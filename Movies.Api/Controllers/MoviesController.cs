@@ -63,6 +63,7 @@ public class MoviesController(IMovieService movieService) : ControllerBase
         return Ok();
     }
     
+    [Obsolete]
     [Authorize(AuthConstants.TrustedMemberPolicyName)]
     [HttpPut(ApiEndpoints.Movies.Update)]
     [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status200OK)]
