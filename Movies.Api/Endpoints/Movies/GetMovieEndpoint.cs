@@ -11,7 +11,8 @@ public static class GetMovieEndpoint
     public static IEndpointRouteBuilder MapGetMovie(this IEndpointRouteBuilder app)
     {
         app.MapGet(ApiEndpoints.Movies.Get, async (
-            string idOrSlug, IMovieService movieService, HttpContext context, CancellationToken cancellationToken) =>
+            string idOrSlug, IMovieService movieService, 
+            HttpContext context, CancellationToken cancellationToken) =>
         {
             var userId = context.GetUserId();
         

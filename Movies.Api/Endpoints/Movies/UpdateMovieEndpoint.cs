@@ -7,7 +7,7 @@ namespace Movies.Api.Endpoints.Movies;
 
 public static class UpdateMovieEndpoint
 {
-    public const string Name = "CreateMovie";
+    public const string Name = "UpdateMovie";
 
     public static IEndpointRouteBuilder MapUpdateMovie(this IEndpointRouteBuilder app)
     {

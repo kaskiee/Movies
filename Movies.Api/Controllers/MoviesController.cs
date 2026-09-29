@@ -84,6 +84,7 @@ public class MoviesController(IMovieService movieService) : ControllerBase
         return Ok(response);
     }
 
+    [Obsolete]
     [Authorize(AuthConstants.AdminUserPolicyName)]
     [HttpDelete(ApiEndpoints.Movies.Delete)]
     [ProducesResponseType(StatusCodes.Status200OK)]
