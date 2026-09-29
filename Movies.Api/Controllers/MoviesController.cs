@@ -13,6 +13,7 @@ namespace Movies.Api.Controllers;
 [ApiVersion(1.0)]
 public class MoviesController(IMovieService movieService) : ControllerBase
 {
+    [Obsolete]
     [Authorize(AuthConstants.TrustedMemberPolicyName)]
     [HttpPost(ApiEndpoints.Movies.Create)]
     [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status201Created)]

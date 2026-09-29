@@ -1,0 +1,26 @@
+using Movies.Api.Mapping;
+using Movies.Application.Services;
+using Movies.Contracts.Requests;
+
+namespace Movies.Api.Endpoints.Movies;
+
+public static class CreateMovieEndpoint
+{
+    public const string Name = "CreateMovie";
+
+    public static IEndpointRouteBuilder MapCreateMovie(this IEndpointRouteBuilder app)
+    {
+        app.MapPost(ApiEndpoints.Movies.Create, async (
+                CreateMovieRequest request, IMovieService movieService,
+                CancellationToken cancellationToken) =>
+            {
+                var movie = request.MapToMovie();
+                await movieService.CreateAsync(movie, cancellationToken);
+                var response = movie.MapToResponse();
+
+                return TypedResults.CreatedAtRoute(response, GetMovieEndpoint.Name, new { idOrSLug = movie.Id });
+            })
+            .WithName(Name);
+        return app;
+    }
+}
