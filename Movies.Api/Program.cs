@@ -44,13 +44,15 @@ builder.Services.AddAuthorization(x =>
         p => p.AddRequirements(new TrustedMemberRequirement(config["ApiKey"]!)));
 });
 
+builder.Services.AddEndpointsApiExplorer();
+
 builder.Services.AddApiVersioning(x =>
 {
     x.DefaultApiVersion = new ApiVersion(1.0);
     x.AssumeDefaultVersionWhenUnspecified = true;
     x.ReportApiVersions = true;
     x.ApiVersionReader = new MediaTypeApiVersionReader("api-version");
-}).AddMvc().AddApiExplorer();
+}).AddApiExplorer();
 
 //builder.Services.AddControllers();
 

@@ -1,4 +1,4 @@
-using Asp.Versioning;
+/*using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Movies.Api.Auth;
@@ -9,11 +9,11 @@ using Movies.Contracts.Responses;
 
 namespace Movies.Api.Controllers;
 
+[Obsolete]
 [ApiController]
 [ApiVersion(1.0)]
 public class MoviesController(IMovieService movieService) : ControllerBase
 {
-    [Obsolete]
     [Authorize(AuthConstants.TrustedMemberPolicyName)]
     [HttpPost(ApiEndpoints.Movies.Create)]
     [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status201Created)]
@@ -26,7 +26,6 @@ public class MoviesController(IMovieService movieService) : ControllerBase
         return CreatedAtAction(nameof(Get), new { idOrSLug = movie.Id }, movie);
     }
     
-    [Obsolete]
     [HttpGet(ApiEndpoints.Movies.Get)]
     [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -46,7 +45,6 @@ public class MoviesController(IMovieService movieService) : ControllerBase
         return Ok(response);
     }
     
-    [Obsolete]
     [HttpGet(ApiEndpoints.Movies.GetAll)]
     [ProducesResponseType(typeof(MoviesResponse), StatusCodes.Status200OK)]
     public async Task<IActionResult> GetAll([FromQuery] GetAllMoviesRequest request, CancellationToken cancellationToken)
@@ -63,7 +61,6 @@ public class MoviesController(IMovieService movieService) : ControllerBase
         return Ok();
     }
     
-    [Obsolete]
     [Authorize(AuthConstants.TrustedMemberPolicyName)]
     [HttpPut(ApiEndpoints.Movies.Update)]
     [ProducesResponseType(typeof(MovieResponse), StatusCodes.Status200OK)]
@@ -83,8 +80,7 @@ public class MoviesController(IMovieService movieService) : ControllerBase
         
         return Ok(response);
     }
-
-    [Obsolete]
+    
     [Authorize(AuthConstants.AdminUserPolicyName)]
     [HttpDelete(ApiEndpoints.Movies.Delete)]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -99,4 +95,4 @@ public class MoviesController(IMovieService movieService) : ControllerBase
 
         return Ok();
     }
-}
+}*/

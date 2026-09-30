@@ -2,6 +2,7 @@ using Movies.Api.Auth;
 using Movies.Api.Mapping;
 using Movies.Application.Services;
 using Movies.Contracts.Requests;
+using Movies.Contracts.Responses;
 
 namespace Movies.Api.Endpoints.Movies;
 
@@ -28,7 +29,8 @@ public static class GetAllMoviesEndpoint
         
             return TypedResults.Ok(response);
         })
-        .WithName(Name);
+        .WithName(Name)
+        .Produces<MoviesResponse>();
         return app;
     }
 }

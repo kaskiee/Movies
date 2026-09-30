@@ -1,4 +1,4 @@
-using Asp.Versioning;
+/*using Asp.Versioning;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Movies.Api.Auth;
@@ -9,11 +9,11 @@ using Movies.Contracts.Responses;
 
 namespace Movies.Api.Controllers;
 
+[Obsolete]
 [ApiController]
 [ApiVersion(1.0)]
 public class RatingsController(IRatingService ratingService) : ControllerBase
 {
-    [Obsolete]
     [Authorize]
     [HttpPut(ApiEndpoints.Movies.Rate)]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -24,8 +24,7 @@ public class RatingsController(IRatingService ratingService) : ControllerBase
         var result = await ratingService.RateMovieAsync(movieId, request.Rating, userId!.Value, cancellationToken);
         return result ? Ok() : NotFound();
     }
-
-    [Obsolete]
+    
     [Authorize]
     [HttpDelete(ApiEndpoints.Movies.DeleteRating)]
     [ProducesResponseType(StatusCodes.Status200OK)]
@@ -36,8 +35,7 @@ public class RatingsController(IRatingService ratingService) : ControllerBase
         var result = await ratingService.DeleteRatingAsync(movieId, userId!.Value, cancellationToken);
         return result ? Ok() : NotFound();
     }
-
-    [Obsolete]
+    
     [Authorize]
     [HttpGet(ApiEndpoints.Ratings.GetUserRatings)]
     [ProducesResponseType(typeof(IEnumerable<MovieRatingResponse>), StatusCodes.Status200OK)]
@@ -48,4 +46,4 @@ public class RatingsController(IRatingService ratingService) : ControllerBase
         var ratingsResponse = ratings.MapToResponse();
         return Ok(ratingsResponse);
     }
-}
+}*/
