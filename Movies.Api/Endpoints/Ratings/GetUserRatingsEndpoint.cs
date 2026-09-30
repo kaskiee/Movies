@@ -24,7 +24,9 @@ public static class GetUserRatingsEndpoint
             })
             .WithName(Name)
             .Produces<IEnumerable<MovieRatingResponse>>()
-            .RequireAuthorization();
+            .RequireAuthorization()
+            .WithApiVersionSet(ApiVersioning.VersionSet)
+            .HasApiVersion(1.0);
         return app;
     }
 }

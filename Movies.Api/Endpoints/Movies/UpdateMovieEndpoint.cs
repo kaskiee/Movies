@@ -32,7 +32,9 @@ public static class UpdateMovieEndpoint
             .Produces<MovieResponse>(StatusCodes.Status201Created)
             .Produces<ValidationFailureResponse>(StatusCodes.Status400BadRequest)
             .Produces(StatusCodes.Status404NotFound)
-            .RequireAuthorization(AuthConstants.TrustedMemberPolicyName);
+            .RequireAuthorization(AuthConstants.TrustedMemberPolicyName)
+            .WithApiVersionSet(ApiVersioning.VersionSet)
+            .HasApiVersion(1.0);
         return app;
     }
 }
